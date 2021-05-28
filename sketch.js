@@ -93,5 +93,10 @@ new p5(
 
       hands = hands.update();
     }
+
+    p.windowResized = () =>{
+      p.resizeCanvas(p.windowWidth, p.windowHeight)
+    }
+
   }
 );
