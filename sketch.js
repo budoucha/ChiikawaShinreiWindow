@@ -73,6 +73,7 @@ new p5(
     let hands = new Hands;
 
     p.setup = () => {
+      p.pixelDensity(1);      
       canvas = p.createCanvas(p.windowWidth, p.windowHeight);
       canvas.parent("shinrei");
       p.background(bgColor);
