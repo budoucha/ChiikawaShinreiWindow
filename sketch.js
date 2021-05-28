@@ -9,7 +9,7 @@ new p5(
         const density = hands.length / (p.width / 100 * p.height / 100);
 
         //random birth
-        if (Math.random() > 0.7 && density < 0.1) {
+        if (Math.random() > 0.7 && density < 0.2) {
           this.newHand();
         }
 
@@ -33,7 +33,7 @@ new p5(
         isRightHand = Math.random() > 0.5,
         size = Math.random() * p.width / 6 + p.width / 12,
         angle = Math.random() * Math.PI * 2,
-        ttl = Math.random() * 100 + 20
+        ttl = Math.random() * 80 + 20
       ) {
         this.posX = posX;
         this.posY = posY;
