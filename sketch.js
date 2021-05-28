@@ -16,9 +16,9 @@ new p5(
         //random birth
         if (Math.random() > 0.7 && density < 0.2 && this.lockTime < 1) {
           this.newHand();
-          if(Math.random()>0.99){
+          if (Math.random() > 0.99) {
             this.hands.splice(0);
-            this.newHand(p.width/2, p.height/2, p.height,80);
+            this.newHand(p.width / 2, p.height / 2, p.height * 1.4, 80);
             this.lockTime = 80;
           }
         }
