@@ -28,8 +28,8 @@ new p5(
     class Hand {
       constructor(
         //random()*(max-min)+min
-        posX = Math.random() * p.width / 2,
-        posY = Math.random() * p.height / 2,
+        posX = Math.random() * p.width,
+        posY = Math.random() * p.height,
         isRightHand = Math.random() > 0.5,
         size = Math.random() * p.width / 6 + p.width / 12,
         angle = Math.random() * Math.PI * 2,
@@ -54,10 +54,8 @@ new p5(
       }
 
       draw() {
-        //TODO show image here
-
         p.push();
-        p.translate(this.posX * 2, this.posY * 2);
+        p.translate(this.posX, this.posY);
         p.rotate(this.angle);
         p.imageMode(p.CENTER);
         const img = this.isRightHand ? imgR : imgL;
@@ -73,7 +71,7 @@ new p5(
     let hands = new Hands;
 
     p.setup = () => {
-      p.pixelDensity(1);      
+      p.pixelDensity(1);
       canvas = p.createCanvas(p.windowWidth, p.windowHeight);
       canvas.parent("shinrei");
       p.background(bgColor);
@@ -94,7 +92,7 @@ new p5(
       hands = hands.update();
     }
 
-    p.windowResized = () =>{
+    p.windowResized = () => {
       p.resizeCanvas(p.windowWidth, p.windowHeight)
     }
 
