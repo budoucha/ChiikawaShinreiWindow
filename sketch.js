@@ -19,6 +19,7 @@ new p5(
           if (Math.random() > 0.99) {
             this.hands.splice(0);
             this.newHand(p.width / 2, p.height / 2, p.height * 1.4, 80);
+            window.navigator.vibrate(200);
             this.lockTime = 80;
           }
         }
