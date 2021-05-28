@@ -1,27 +1,30 @@
 new p5(
   p => {
-    class Hands extends Array {
+    class Hands {
+      constructor(){
+        this.hands = new Array();
+      }
+
       newHand() {
-        this.push(new Hand());
+        this.hands.push(new Hand());
       }
 
       update() {
-        const density = hands.length / (p.width / 100 * p.height / 100);
+        const density = this.hands.length / (p.width / 100 * p.height / 100);
 
         //random birth
         if (Math.random() > 0.7 && density < 0.2) {
           this.newHand();
         }
 
-        for (const hand of this) {
+        for (const hand of this.hands) {
           hand.update();
           if (hand.isAlive) {
             hand.draw();
           }
         }
 
-        const ret = this.filter(hand => hand.isAlive);
-        return ret;
+        this.hands = this.hands.filter(hand => hand.isAlive);
       }
     }
 
@@ -89,7 +92,7 @@ new p5(
       p.line(0, p.height / 2, p.width, p.height / 2);
       p.line(p.width / 2, 0, p.width / 2, p.height);
 
-      hands = hands.update();
+      hands.update();
     }
 
     p.windowResized = () => {
