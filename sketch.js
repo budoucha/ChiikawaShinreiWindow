@@ -1,20 +1,26 @@
 new p5(
   p => {
     class Hands {
-      constructor(){
+      constructor() {
         this.hands = new Array();
+        this.lockTime = 0;
       }
 
-      newHand() {
-        this.hands.push(new Hand());
+      newHand(posX, posY, size, ttl) {
+        this.hands.push(new Hand(posX, posY, size, ttl));
       }
 
       update() {
         const density = this.hands.length / (p.width / 100 * p.height / 100);
 
         //random birth
-        if (Math.random() > 0.7 && density < 0.2) {
+        if (Math.random() > 0.7 && density < 0.2 && this.lockTime < 1) {
           this.newHand();
+          if(Math.random()>0.99){
+            this.hands.splice(0);
+            this.newHand(p.width/2, p.height/2, p.height,80);
+            this.lockTime = 80;
+          }
         }
 
         for (const hand of this.hands) {
@@ -25,6 +31,9 @@ new p5(
         }
 
         this.hands = this.hands.filter(hand => hand.isAlive);
+        if (this.lockTime > 0) {
+          this.lockTime--;
+        }
       }
     }
 
@@ -33,10 +42,10 @@ new p5(
         //random()*(max-min)+min
         posX = Math.random() * p.width,
         posY = Math.random() * p.height,
-        isRightHand = Math.random() > 0.5,
         size = Math.random() * p.width / 6 + p.width / 12,
+        ttl = Math.random() * 80 + 20,
         angle = Math.random() * Math.PI * 2,
-        ttl = Math.random() * 80 + 20
+        isRightHand = Math.random() > 0.5
       ) {
         this.posX = posX;
         this.posY = posY;
